@@ -89,6 +89,79 @@ Aqui estão:
 
 ---
 
+## 🧠 Binding System (Custom Implementation)
+
+O projeto possui um sistema de binding customizado desenvolvido com foco em performance e flexibilidade, utilizando Expression Trees para reduzir o overhead de reflexão.
+
+### ⚡ Objetivos
+- Melhorar performance no mapeamento de requisições
+- Reduzir uso de reflection
+- Permitir extensibilidade através de providers
+- Estrutura desacoplada e escalável
+
+---
+
+## 🏗️ Estrutura
+
+
+Structure/
+└── Binding/
+├── Core/
+│ ├── EndpointBinder.cs
+│ ├── BindingSource.cs
+│
+├── Cache/
+│ ├── BinderCache.cs
+│ ├── BinderCacheFactory.cs
+│
+├── Actions/
+│ ├── BinderAction.cs
+│
+├── Providers/
+│ ├── Interfaces/
+│ │ └── IBindingValueProvider.cs
+│ │
+│ ├── Implementations/
+│ │ ├── RouteValueProvider.cs
+│ │ ├── QueryValueProvider.cs
+│ │
+│ └── BindingValueProviderResolver.cs
+│
+├── Body/
+│ ├── BodyBinder.cs
+│
+├── Factories/
+│ ├── SetterFactory.cs
+│
+├── Converters/
+│ ├── TypeConverter.cs
+
+
+---
+
+## 🔧 Como funciona
+
+- O `EndpointBinder` é responsável por orquestrar o processo de binding
+- Os `Providers` determinam de onde os dados são extraídos (Route, Query, etc.)
+- O `TypeConverter` realiza a conversão de tipos
+- O `SetterFactory` utiliza Expression Trees para gerar setters performáticos
+- O sistema utiliza cache para evitar reconstrução desnecessária
+
+---
+
+## 🚧 Status
+
+> ⚠️ Implementação em andamento  
+> O binding ainda está em fase de validação e pode sofrer alterações.
+
+---
+
+## 🚀 Próximos passos
+
+- [ ] Testes completos do binding
+- [ ] Validação de performance
+- [ ] Integração com pipeline de validação
+- [ ] Suporte a novos providers (Header, Form, etc.)
 # ▶️ Como executar o backend
 
 1. Navegue até a pasta do backend
